@@ -8,6 +8,16 @@ public class Application {
 
     }
 
+    public static List<Integer> toIntegerList(String input){
+        List<Integer> player = new ArrayList<>();
+        for(int i = 0; i < input.length(); i++){
+            int number = Integer.valueOf(input.charAt(i));
+            player.add(number);
+        }
+
+        return player;
+    }
+
     public static boolean isValidData(List<Integer> player){
         if(player.size() != 3){
             throw new IllegalArgumentException();
