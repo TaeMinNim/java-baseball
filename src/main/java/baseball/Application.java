@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -8,9 +9,19 @@ public class Application {
     }
 
     public static boolean isValidData(List<Integer> player){
-        for(int i = 0; i < player.size(); i++){
-            int number = player.get(i);
-            if(i == player.lastIndexOf(number)){
+        if(player.size() != 3){
+            throw new IllegalArgumentException();
+        }
+
+        List<Integer> notOverlap = new ArrayList<>();
+        for(int number: player){
+            if(number == 0){
+                throw new IllegalArgumentException();
+            }
+
+            if(!notOverlap.contains(number)){
+                notOverlap.add(number);
+            } else{
                 throw new IllegalArgumentException();
             }
         }
