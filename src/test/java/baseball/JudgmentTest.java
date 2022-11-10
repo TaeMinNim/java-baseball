@@ -59,4 +59,37 @@ public class JudgmentTest {
             assertThat(actual).isEqualTo(result);
         }
     }
+
+    @DisplayName("hasPlace 메소드 테스트")
+    @Nested
+    class hasPlaceTest {
+        @BeforeEach
+        void setup() {
+            judgment = new Judgment();
+        }
+
+        @DisplayName("일치한다")
+        @Test
+        void match() {
+            int number = 4;
+            int index = 0;
+
+            boolean result = true;
+
+            boolean actual = judgment.hasPlace(computer, number, index);
+            assertThat(actual).isEqualTo(result);
+        }
+
+        @DisplayName("일치하지 않는다")
+        @Test
+        void notMatch() {
+            int number = 4;
+            int index = 1;
+
+            boolean result = false;
+
+            boolean actual = judgment.hasPlace(computer, number, index);
+            assertThat(actual).isEqualTo(result);
+        }
+    }
 }
