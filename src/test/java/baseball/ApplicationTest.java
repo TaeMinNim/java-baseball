@@ -63,6 +63,20 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @DisplayName("toIntegerList 메소드 테스트")
+    @Nested
+    class toIntegerListTest{
+        @DisplayName("정상 변환")
+        @Test
+        void case1() {
+            String input = "425";
+            List<Integer> result = List.of(4, 2, 5);
+
+            List<Integer> actual = Application.toIntegerList(input);
+            assertThat(actual).isEqualTo(result);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
