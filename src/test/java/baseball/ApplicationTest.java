@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +30,37 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @DisplayName("isValidData 메소드 테스트")
+    @Nested
+    class isValidDataTest{
+        @DisplayName("중복되는 숫자가 있는 경우")
+        @Test
+        void overlap() {
+            List<Integer> player = List.of(4, 4, 5);
+
+            assertThatThrownBy(() -> Application.isValidData(player))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("0이 포함된 경우")
+        @Test
+        void includeZero() {
+            List<Integer> player = List.of(4, 0, 5);
+
+            assertThatThrownBy(() -> Application.isValidData(player))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("3자리가 아닌 경우")
+        @Test
+        void notThreeFigures() {
+            List<Integer> player = List.of(4, 5);
+
+            assertThatThrownBy(() -> Application.isValidData(player))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Override
