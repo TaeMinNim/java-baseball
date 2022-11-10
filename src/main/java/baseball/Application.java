@@ -11,7 +11,7 @@ public class Application {
     public static List<Integer> toIntegerList(String input){
         List<Integer> player = new ArrayList<>();
         for(int i = 0; i < input.length(); i++){
-            int number = Integer.valueOf(input.charAt(i));
+            int number = Character.getNumericValue(input.charAt(i));
             player.add(number);
         }
 
