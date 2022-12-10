@@ -6,9 +6,18 @@ import java.util.List;
 
 public class Game {
     private Number computer;
+    private List<Integer> score;
 
     public Game(){
         this.computer = new Number(generateNumber());
+    }
+
+    public boolean run(Number player){
+        score = computer.compare(player);
+        if(score.get(Number.STRIKE) == 3){
+            return false;
+        }
+        return true;
     }
 
     private String generateNumber(){
