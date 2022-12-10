@@ -36,4 +36,8 @@ public class Game {
 
         return number;
     }
+
+    public List<Integer> getScore(){
+        return score;
+    }
 }
